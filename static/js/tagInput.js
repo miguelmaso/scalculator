@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const tagInput = container.querySelector(".tagInput");
         const hiddenInput = container.nextElementSibling; // Hidden input field
         let tags = [];
-        let suggestions = new Set(); // Store previously entered values
 
         function updateHiddenInput() {
             hiddenInput.value = tags.join(",");
