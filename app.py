@@ -1,6 +1,6 @@
 from flask import Flask
 from config import Config
-from routes.main import main_routes
+from routes.csection import csection
 from routes.auth import auth
 # from flask_session import Session
 
@@ -11,7 +11,7 @@ app.config.from_object(Config)
 # Session(app)
 
 # Register Blueprints
-app.register_blueprint(main_routes)
+app.register_blueprint(csection)
 app.register_blueprint(auth)
 
 if __name__ == "__main__":
@@ -19,15 +19,3 @@ if __name__ == "__main__":
 
 
 
-
-# from flask import Flask, render_template
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
-
-# if __name__ == '__main__':
-
-#     app.run()
