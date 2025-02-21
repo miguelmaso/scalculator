@@ -39,7 +39,7 @@ h2 {
 }
 
 .results {
-    flex: 1.5;  /* Make results column wider */
+    flex: 2;  /* Make results column wider */
 }
 
 #graph-container {
@@ -69,14 +69,13 @@ input {
     margin-right: 10px;
 }
 
-.input-group select {
+.input-container select {
     flex: 2;  /* Same width ratio as input */
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
     font-size: 14px;
-    appearance: none; /* Removes default dropdown styling */
     text-align: right; /* Align text like inputs */
     cursor: pointer;
 }
@@ -112,6 +111,7 @@ button:hover {
 }
 
 p {
+    text-align: left;
     margin-top: 10px;
 }
 
@@ -124,12 +124,25 @@ a:hover {
     text-decoration: underline;
 }
 
+.tag-input-container {
+    display: flex;
+    flex-direction: column;  /* Labels are above */
+    width: 100%;
+    margin-bottom: 10px;  /* Same spacing as text inputs */
+}
+
+.tag-input-container label {
+    text-align: left;
+    margin-bottom: 5px;  /* Space between label and input */
+}
+
 .tag-container {
     display: flex;
     flex-wrap: wrap;
+    background-color: white;
     border: 1px solid #ccc;
-    padding: 5px;
     border-radius: 5px;
+    padding: 5px;
     min-height: 40px;
 }
 
@@ -154,4 +167,18 @@ a:hover {
     margin-left: 8px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.graph-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 45%;
+}
+
+#graph-container-1, #graph-container-2 {
+    flex: 1;  
+    max-width: 300px;  /* Limits graph width */
+    min-width: 200px;  /* Prevents them from being too small */
+    height: 350px;  /* Adjusts graph height */
 }

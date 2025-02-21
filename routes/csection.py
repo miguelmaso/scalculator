@@ -37,23 +37,28 @@ def calculate():
         As=0.005,
         As1=0)
     
-    a_strain = np.linspace(-s.concrete.e1, s.concrete.e1)
-    f = np.array([s.forces(a) for a in a_strain])
+    ax_strain = np.linspace(-s.concrete.e1, s.concrete.e1)
+    f = np.array([s.forces(a) for a in ax_strain])
     N, M = zip(*f)
     N = np.array(N)
     M = np.array(M)
 
+    # Plot the axial force-moment graph
     layout = go.Layout(
         xaxis = dict(
             minallowed = 0,
             title = f'N ({uts.force.name})',
-            fixedrange = True
+            fixedrange = True,
+            range=[0, max(N) * uts.force.factor]
         ),
         yaxis = dict(
             minallowed = 0,
             title = f'M ({uts.moment.name})',
-            fixedrange = True
-        )
+            fixedrange = True,
+            range=[0, max(M) * uts.moment.factor]
+        ),
+        margin=dict(l=50, r=10, t=0, b=0),  # Reduce inner spacing
+        paper_bgcolor='rgba(0,0,0,0)'       # Transparent background
     )
     fig = go.Figure(
         data = go.Scatter(x=(uts.force.factor*N).tolist(), y=(uts.moment.factor*M).tolist()),
@@ -61,9 +66,45 @@ def calculate():
     )
     graph_json = pio.to_json(fig)
 
+    # Plot the section graph
+    zero_crossing = np.where(np.diff(np.sign(N)))[0][0]
+    a0 = ax_strain[zero_crossing]
+
+    strain = s.strain(a0)
+    stresses_c = s.stress_c(a0)
+    z = s._z_c
+    stresses_c = np.append(stresses_c, 0)
+    z_c = np.append(z, z[-1])
+    xrange_2 = [strain[0] * 1.05, strain[-1] * 1.05]
+    xrange_1 = [strain[0] / strain[-1] * max(stresses_c) * 1.05, max(stresses_c) * 1.05]
+
+    section_layout = go.Layout(
+        xaxis = dict(
+            range = xrange_1,
+            fixedrange = True,
+            visible = False
+        ),
+        xaxis2 = go.layout.XAxis(
+            overlaying = 'x',
+            range = xrange_2,
+            fixedrange = True,
+            visible = False
+        ),
+        yaxis = dict(
+            fixedrange = True
+        ),
+        showlegend = False,
+        margin=dict(l=50, r=10, t=0, b=40),  # Reduce inner spacing
+        paper_bgcolor='rgba(0,0,0,0)'       # Transparent background
+    )
+    fig2 = go.Figure(layout=section_layout)
+    fig2.add_trace(go.Scatter(x=stresses_c.tolist(), y=z_c.tolist(), fill='toself'))
+    fig2.add_trace(go.Scatter(x=strain.tolist(), y=z.tolist(), xaxis='x2'))
+    graph2_json = pio.to_json(fig2)
+
     result = N[10] * uts.force.factor
     
-    return jsonify({'result': f'{result:.2f}', 'graph': graph_json})
+    return jsonify({'result': f'{result:.2f}', 'graph': graph_json, 'graph2': graph2_json})
 
 if __name__ == '__main__':
     csection.run(debug=True)

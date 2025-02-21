@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
 </head>
 <body>
     <div class="container">
@@ -34,6 +37,7 @@
                     <input type="text" id="input3" name="input3" placeholder="40">
                     <span class="unit">mm</span>
                 </div>
+                <p><span id="latex-expression">\( 25\%bh^2f_{cd} \)</span> :<span id="result"></span></p>
             </div>
             <div class="column">
                 <div class="tag-input-container">
@@ -53,14 +57,13 @@
             </div>
             <div class="column results">
                 <h3>Results</h3>
-                <p>Reduced moment: <span id="result">-</span></p>
-                <div id="graph-container">
-                    <!-- Plotly graph will be inserted here -->
+                <div class="graph-container">
+                    <div id="graph-container-1"></div>
+                    <div id="graph-container-2"></div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="/static/js/tagInput.js"></script>
     <script src="/static/js/csection.js"></script>
 </body>

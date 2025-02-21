@@ -23,43 +23,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateResults(data) {
-        if (data.error) {
-            document.getElementById("result").textContent = "Error: " + data.error;
-        } else {
+        if (data.result) {
             document.getElementById("result").textContent = data.result;
+        } else {
+            document.getElementById("result").textContent = "";
         }
         return data;
     }
 
     function updateGraph(data) {
-        let graphContainer = document.getElementById("graph-container");
-        let graphJson = data.graph;
-
-        if (!graphJson || graphJson.trim() === "{}") {
-            console.error("Invalid graph data:", graphJson);
-            return;
+        if (data.graph) {
+            let graphContainer = document.getElementById("graph-container-1");
+            let plotData = JSON.parse(data.graph); // Parse JSON response from Flask
+            Plotly.react(graphContainer, plotData.data, plotData.layout);
         }
-    
-        let plotData;
-        try {
-            plotData = JSON.parse(graphJson);
-        } catch (error) {
-            console.error("Error parsing graph JSON:", error);
-            return;
+        if (data.graph2) {
+            let graphContainer = document.getElementById("graph-container-2");
+            let plotData = JSON.parse(data.graph2); // Parse JSON response from Flask
+            Plotly.react(graphContainer, plotData.data, plotData.layout);
         }
-    
-        if (!plotData.data || plotData.data.length === 0) {
-            console.error("Graph data is empty:", plotData);
-            return;
-        }
-
-        console.error("AAAAAAA", plotData);
-        Plotly.react(graphContainer, plotData.data, plotData.layout);
-        // if (data.graph) {
-        //     let graphContainer = document.getElementById("graph-container");
-        //     let plotData = JSON.parse(data.graph); // Parse JSON response from Flask
-        //     Plotly.react(graphContainer, plotData.data, plotData.layout);
-        // }
-        // return data;
+        return data;
     }
 });
