@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         function isValidFormat(value) {
             const validNumbers = ["8", "10", "12", "16", "20", "25", "32", "40"];
-            const regex = /^(\d*)([Hh])(\d+)(?:(@)(d+))?$/; // Only matches nHd (H required)
+            const regex = /^(\d*)([Hh])(\d+)(?:(@)(\d+))?$/; // Matches 3H25@100, where 3 is optional, H25 is mandatory and @100 is optional
 
             const match = value.match(regex);
             if (!match) {
-                alert("Invalid format! Use: nHd, Hd@s or nHd@s, where the diameter d is specified after the letter H and the spacing s is specified after the letter @.");
+                alert("Invalid format! Type 4H12 or H12@100, where H20 represent the diameter specified in mm and @100 is the spacing.");
                 return false;
             }
 
@@ -49,28 +49,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const tag = document.createElement("span");
             tag.classList.add("tag");
-            tag.textContent = value;
+            tag.textContent = validatedValue;
 
             const removeBtn = document.createElement("span");
             removeBtn.classList.add("remove-tag");
             removeBtn.innerHTML = "&times;";
             removeBtn.addEventListener("click", function () {
                 container.removeChild(tag);
-                tags = tags.filter(t => t !== value);
+                tags = tags.filter(t => t !== validatedValue);
                 updateHiddenInput();
             });
 
             tag.appendChild(removeBtn);
             container.insertBefore(tag, tagInput);
-            tags.push(value);
+            tags.push(validatedValue);
             updateHiddenInput();
         }
 
         tagInput.addEventListener("keydown", function (event) {
-            if (event.key === "Enter" || event.key === ",") {
-                event.preventDefault();
-                createTag(tagInput.value);
-                tagInput.value = "";
+            if (event.key === "Enter" || event.key === "Tab" || event.key === " " || event.key === ",") {
+                if (tagInput.value.trim() !== "") {
+                    event.preventDefault();
+                    createTag(tagInput.value);
+                    tagInput.value = "";
+                }
             }
         });
     }

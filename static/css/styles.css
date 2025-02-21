@@ -9,18 +9,42 @@ body {
     height: 100vh;
 }
 
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
 .container {
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    max-width: 1200px;
     text-align: center;
 }
 
-h2 {
-    margin-bottom: 20px;
-    color: #333;
+.columns {
+    display: flex;  /* Enables horizontal layout */
+    justify-content: space-between;  /* Spaces columns evenly */
+    align-items: flex-start;  /* Aligns items at the top */
+    gap: 20px;  /* Adds spacing between columns */
+}
+
+.column {
+    flex: 1;  /* Makes all columns equal width */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.results {
+    flex: 1.5;  /* Make results column wider */
+}
+
+#graph-container {
+    width: 100%;
+    height: 400px;
 }
 
 input {
@@ -29,6 +53,47 @@ input {
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.input-container label {
+    flex: 1;  /* Label takes 1 part of space */
+    text-align: right;
+    margin-right: 10px;
+}
+
+.input-group select {
+    flex: 2;  /* Same width ratio as input */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+    appearance: none; /* Removes default dropdown styling */
+    text-align: right; /* Align text like inputs */
+    cursor: pointer;
+}
+
+.input-container input {
+    flex: 2;  /* Input takes 2 parts of space */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: right;  /* Align text to right for numbers */
+}
+
+.unit {
+    flex: 0.5;  /* Unit takes half a part */
+    margin-left: 10px;
+    font-size: 14px;
+    color: #555;
 }
 
 button {
