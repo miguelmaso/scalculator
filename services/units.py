@@ -2,20 +2,21 @@ class Unit:
 
     __factors = dict(
         N = 1,
-        kN = 1e-3,
+        kN = 1e3,
         Nm = 1,
-        kNm = 1e-3,
-        mm = 1e3,
+        kNm = 1e3,
+        mm = 1e-3,
         cm = 1e-2,
         m = 1,
         Pa = 1,
-        kPa = 1e-3,
-        MPa = 1e-6
+        kPa = 1e3,
+        MPa = 1e6
     )
 
     def __init__(self, name: str):
         self.name = name
-        self.factor = self.__factors[name]
+        self.to_si = self.__factors[name]
+        self.from_si = 1 / self.to_si
 
 
 class Units:

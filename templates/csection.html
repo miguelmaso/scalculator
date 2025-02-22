@@ -14,7 +14,7 @@
         <div class="columns">
             <div class="column">
                 <div class="input-container">
-                    <label for="options">Section</label>
+                    <label for="options">Structure</label>
                     <select id="options">
                         <option value="opt1">Beam</option>
                         <option value="opt2">Column</option>
@@ -23,18 +23,27 @@
                     </select>
                 </div>
                 <div class="input-container">
+                    <label for="options">Section</label>
+                    <select id="options">
+                        <option value="opt1">Rectangular</option>
+                        <option value="opt2">T-section</option>
+                        <option value="opt3">Hollow section</option>
+                        <option value="opt3">Circular</option>
+                    </select>
+                </div>
+                <div class="input-container">
                     <label for="input1">Width</label>
-                    <input type="text" id="input1" name="input1" placeholder="500">
+                    <input type="text" id="input1" name="width" placeholder="500">
                     <span class="unit">mm</span>
                 </div>
                 <div class="input-container">
                     <label for="input2">Depth</label>
-                    <input type="text" id="input2" name="input2" placeholder="600">
+                    <input type="text" id="input2" name="depth" placeholder="600">
                     <span class="unit">mm</span>
                 </div>
                 <div class="input-container">
                     <label for="input3">Covering</label>
-                    <input type="text" id="input3" name="input3" placeholder="40">
+                    <input type="text" id="input3" name="covering" placeholder="40">
                     <span class="unit">mm</span>
                 </div>
                 <p><span id="latex-expression">\( 25\%bh^2f_{cd} \)</span> :<span id="result"></span></p>
