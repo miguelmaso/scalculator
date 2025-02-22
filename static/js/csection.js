@@ -1,25 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
+    
     document.querySelectorAll(".input-container input").forEach(input => {
         input.addEventListener("blur", validateInput);
         input.addEventListener("blur", sendCalculationRequest);
     });
-});
 
-document.querySelectorAll(".tag-container").forEach(container => {
-    let inputField = container.querySelector(".tagInput");
+    document.querySelectorAll(".tag-container").forEach(container => {
+        let inputField = container.querySelector(".tagInput");
 
-    // Trigger calculation when pressing Enter, Tab... to add a tag
-    inputField.addEventListener("keydown", function (event) {
-        if (event.key === "Enter" || event.key === "Tab" || event.key === " " || event.key === ",") {
-            sendCalculationRequest();
-        }
-    });
+        // Trigger calculation when pressing Enter, Tab... to add a tag
+        inputField.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === "Tab" || event.key === " " || event.key === ",") {
+                sendCalculationRequest();
+            }
+        });
 
-    // Trigger calculation when a tag is removed
-    container.addEventListener("click", function (event) {
-        if (event.target.classList.contains("remove-tag")) {
-            sendCalculationRequest();
-        }
+        // Trigger calculation when a tag is removed
+        container.addEventListener("click", function (event) {
+            if (event.target.classList.contains("remove-tag")) {
+                sendCalculationRequest();
+            }
+        });
     });
 });
 

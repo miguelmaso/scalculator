@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+
+    <!-- Scripts -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <!-- <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
 </head>
 <body>
     <div class="container">
@@ -46,18 +54,21 @@
                     <input type="text" id="input3" name="covering" placeholder="40">
                     <span class="unit">mm</span>
                 </div>
-                <p><span id="latex-expression">\( 25\%bh^2f_{cd} \)</span> :<span id="result"></span></p>
+                <div class="tag-input-container">
+                    <label for="latex-expression">Reduced moment</label>
+                    <p><label id="latex-expression">\( 25\%\,b\,h^2\,f_{cd} \)</label> : <span id="result"></span></p>
+                </div>
             </div>
             <div class="column">
                 <div class="tag-input-container">
-                    <label for="tagInput">Top reinforcement:</label>
+                    <label for="tagInput">Top reinforcement</label>
                     <div class="tag-container" data-name="tags_top">
                         <input type="text" class="tagInput" placeholder="Type 3H12 or H20@100 and press Enter...">
                     </div>
                     <input type="hidden" name="tags_top">
                 </div>
                 <div class="tag-input-container">
-                    <label>Bottom reinforcement:</label>
+                    <label>Bottom reinforcement</label>
                     <div class="tag-container" data-name="tags_bottom">
                         <input type="text" class="tagInput" placeholder="Type 5H16 or H20@100 and press Enter...">
                     </div>

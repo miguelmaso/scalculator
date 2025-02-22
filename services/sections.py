@@ -1,6 +1,5 @@
 import numpy as np
 from services.materials import Concrete, ReinforcingSteel
-from services.units import Units
 
 class ConcreteSection:
     
