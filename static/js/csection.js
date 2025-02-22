@@ -31,7 +31,8 @@ function validateInput(event) {
     if (isNaN(value) || parseFloat(value) <= 0) {
         alert("Enter a positive number for " + input.name + ".");
         input.value = "";
-        return;  // Stop further execution
+        input.focus();  // Keep focus on the input field
+        event.preventDefault();  // Prevent focus from moving forward
     }
 }
 
