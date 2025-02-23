@@ -11,8 +11,7 @@
 
     <!-- Scripts -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
-    <!-- <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script"></script> -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
@@ -22,22 +21,17 @@
         <div class="columns">
             <div class="column">
                 <div class="input-container">
-                    <label for="options">Structure</label>
-                    <select id="options">
-                        <option value="opt1">Beam</option>
-                        <option value="opt2">Column</option>
-                        <option value="opt3">Wall</option>
-                        <option value="opt4">Slab</option>
+                    <label for="structure-options">Structure</label>
+                    <select id="structure-options">
+                        <option value="beam">Beam</option>
+                        <option value="slab">Slab</option>
+                        <option value="column">Column</option>
+                        <option value="wall">Wall</option>
                     </select>
                 </div>
                 <div class="input-container">
-                    <label for="options">Section</label>
-                    <select id="options">
-                        <option value="opt1">Rectangular</option>
-                        <option value="opt2">T-section</option>
-                        <option value="opt3">Hollow section</option>
-                        <option value="opt3">Circular</option>
-                    </select>
+                    <label for="section-options">Section</label>
+                    <select id="section-options"></select>
                 </div>
                 <div class="input-container">
                     <label for="input1">Width</label>
