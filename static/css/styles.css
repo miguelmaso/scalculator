@@ -42,17 +42,8 @@ h2 {
     flex: 2;  /* Make results column wider */
 }
 
-#graph-container {
-    width: 100%;
-    height: 400px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.hidden {
+    display: none !important;
 }
 
 .input-container {
@@ -60,7 +51,7 @@ input {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .input-container label {
@@ -81,6 +72,7 @@ input {
 }
 
 .input-container input {
+    width: 100%;
     flex: 2;  /* Input takes 2 parts of space */
     padding: 8px;
     border: 1px solid #ccc;

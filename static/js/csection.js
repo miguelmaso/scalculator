@@ -25,12 +25,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const structureDropdown = document.getElementById("structure-options");
     const sectionDropdown = document.getElementById("section-options");
+    const widthInput = document.getElementById("width");
     const structuralSectionOptions = {
         beam: ["Rectangular", "T-section"],
         slab: ["Rectangular"],
         column: ["Rectangular", "Circular"],
         wall: ["Rectangular"]
     };
+
     function updateStructuralSectionOptions() {
         // Clear previous options
         sectionDropdown.innerHTML = "";
@@ -45,12 +47,48 @@ document.addEventListener("DOMContentLoaded", function () {
                 sectionDropdown.appendChild(option);
             });
         }
+        if (selectedStructure === "slab" || selectedStructure === "wall") {
+            widthInput.disabled = true;
+            widthInput.value = "1000";
+        }
+        else {
+            widthInput.disabled = false;
+        }
     }
-
-    
 
     structureDropdown.addEventListener("change", updateStructuralSectionOptions);
     updateStructuralSectionOptions();
+
+    const widthLabel = document.getElementById('width-label');
+    const flangeInput = document.getElementById('flange');
+    const depthInput = document.getElementById('depth');
+    const webInput = document.getElementById('web');
+    const flangeContainer = flangeInput.closest(".input-container");
+    const depthContainer = depthInput.closest(".input-container");
+    const webContainer = webInput.closest(".input-container");
+
+    function updateSectionInputs() {
+        const selectedSection = sectionDropdown.value;
+        if (selectedSection === "t-section") {
+            flangeContainer.classList.remove("hidden");
+            webContainer.classList.remove("hidden");
+        }
+        else {
+            flangeContainer.classList.add("hidden");
+            webContainer.classList.add("hidden");
+        }
+        if (selectedSection === "circular") {
+            depthContainer.classList.add("hidden");
+            widthLabel.textContent = "Diameter";
+        }
+        else {
+            depthContainer.classList.remove("hidden");
+            widthLabel.textContent = "Width";
+        }
+    }
+
+    sectionDropdown.addEventListener("change", updateSectionInputs);
+    updateSectionInputs();
 });
 
 function validateInput(event) {
