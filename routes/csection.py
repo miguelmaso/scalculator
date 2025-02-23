@@ -46,6 +46,8 @@ def calculate():
         As=reinf_bottom,
         As1=reinf_top)
     
+    reduced_moment = s.reduced_moment * uts.moment.from_si
+
     ax_strain = np.linspace(-s.concrete.e1, s.concrete.e1)
     f = np.array([s.forces(a) for a in ax_strain])
     N, M = zip(*f)
@@ -111,9 +113,11 @@ def calculate():
     fig2.add_trace(go.Scatter(x=strain.tolist(), y=z.tolist(), xaxis='x2'))
     graph2_json = pio.to_json(fig2)
 
-    result = N[10]
-
-    return jsonify({'result': f'{result:.2f}', 'graph': graph_json, 'graph2': graph2_json})
+    return jsonify({
+            'result': f'{reduced_moment:.2f}',
+            'graph': graph_json,
+            'graph2': graph2_json
+        })
 
 
 tag_pattern = re.compile(r'^(\d*)([hH])(\d+)(?:(@)(\d+))?$')

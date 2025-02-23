@@ -5,6 +5,13 @@ class ConcreteSection:
     
     __nc = 50
 
+    __min_reinf = {
+        'beam' : 4e-3,
+        'column' : 4e-3,
+        'slab' : 4e-3,
+        'wall' : 4e-3
+    }
+
     def __init__(self, b: float, h: float, As: float, As1: float, covering: float):
         self.b = b
         self.h = h
@@ -14,9 +21,27 @@ class ConcreteSection:
         self.concrete = Concrete(3e7)
         self.steel = ReinforcingSteel(5e8)
 
+    def minimum_reinforcement(self, structure):
+        ratio = self.__min_reinf[structure]
+        minimum = ratio * self.area
+        perim = 2 * (self.b + self.h)
+        return {
+            'top' : minimum * self.b / perim,
+            'bottom' : minimum * self.b / perim,
+            'side' : minimum * self.h / perim
+        }
+
+    @property
+    def area(self):
+        return self.b * self.h
+
     @property
     def d(self):
         return self.h - self.covering
+
+    @property
+    def reduced_moment(self):
+        return 0.25 * self.b * self.h**2 * self.concrete.fc
 
     @property
     def _z_As(self):
