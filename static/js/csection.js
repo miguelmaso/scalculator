@@ -22,43 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-
-    const structureDropdown = document.getElementById("structure-options");
+    
+    // Update the section input fields according to the section type
     const sectionDropdown = document.getElementById("section-options");
-    const widthInput = document.getElementById("width");
-    const structuralSectionOptions = {
-        beam: ["Rectangular", "T-section"],
-        slab: ["Rectangular"],
-        column: ["Rectangular", "Circular"],
-        wall: ["Rectangular"]
-    };
-
-    function updateStructuralSectionOptions() {
-        // Clear previous options
-        sectionDropdown.innerHTML = "";
-
-        const selectedStructure = structureDropdown.value;
-        if (selectedStructure) {
-            // Populate it with new options
-            structuralSectionOptions[selectedStructure].forEach(item => {
-                let option = document.createElement("option");
-                option.value = item.toLowerCase();
-                option.textContent = item;
-                sectionDropdown.appendChild(option);
-            });
-        }
-        if (selectedStructure === "slab" || selectedStructure === "wall") {
-            widthInput.disabled = true;
-            widthInput.value = "1000";
-        }
-        else {
-            widthInput.disabled = false;
-        }
-    }
-
-    structureDropdown.addEventListener("change", updateStructuralSectionOptions);
-    updateStructuralSectionOptions();
-
     const widthLabel = document.getElementById('width-label');
     const flangeInput = document.getElementById('flange');
     const depthInput = document.getElementById('depth');
@@ -89,6 +55,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
     sectionDropdown.addEventListener("change", updateSectionInputs);
     updateSectionInputs();
+
+    // Update the section stype according to the structure type
+    const structureDropdown = document.getElementById("structure-options");
+    const widthInput = document.getElementById("width");
+    const structuralSectionOptions = {
+        beam: ["Rectangular", "T-section"],
+        slab: ["Rectangular"],
+        wall: ["Rectangular"],
+        column: ["Rectangular", "Circular"]
+    };
+
+    function updateStructuralSectionOptions() {
+        // Clear previous options
+        sectionDropdown.innerHTML = "";
+
+        const selectedStructure = structureDropdown.value;
+        if (selectedStructure) {
+            // Populate it with new options
+            structuralSectionOptions[selectedStructure].forEach(item => {
+                let option = document.createElement("option");
+                option.value = item.toLowerCase();
+                option.textContent = item;
+                sectionDropdown.appendChild(option);
+            });
+        }
+        if (selectedStructure === "slab" || selectedStructure === "wall") {
+            widthInput.disabled = true;
+            widthInput.value = "1000";
+        }
+        else {
+            widthInput.disabled = false;
+        }
+        updateSectionInputs();
+    }
+
+    structureDropdown.addEventListener("change", updateStructuralSectionOptions);
+    updateStructuralSectionOptions();
 });
 
 function validateInput(event) {
