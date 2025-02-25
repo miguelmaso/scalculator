@@ -109,6 +109,11 @@ function validateInput(event) {
 function sendCalculationRequest() {
     let formData = {};
 
+    // Collect selection inputs
+    document.querySelectorAll(".input-container select").forEach(select => {
+        formData[select.name] = select.value;
+    });
+
     // Collect numeric inputs
     document.querySelectorAll(".input-container input").forEach(input => {
         formData[input.name] = input.value;
@@ -121,6 +126,7 @@ function sendCalculationRequest() {
         formData[tagName] = tags;  // Store as an array
     });
 
+    // Send request
     fetch("/calculate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

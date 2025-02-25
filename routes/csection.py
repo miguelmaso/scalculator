@@ -5,6 +5,7 @@ import plotly.graph_objs as go
 import plotly.io as pio
 from services.sections import ConcreteSection
 from services.units import Units
+from services.codes import StructureTypes
 
 csection = Blueprint("csection", __name__)
 

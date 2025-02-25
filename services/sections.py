@@ -1,16 +1,16 @@
 import numpy as np
 from services.materials import Concrete, ReinforcingSteel
+from services.codes import UNE_EN
 
-class ConcreteSection:
+class Section:
+
+    @property
+    def area(self):
+        raise NotImplementedError()
+
+class ConcreteSection(Section):
     
     __nc = 50
-
-    __min_reinf = {
-        'beam' : 4e-3,
-        'column' : 4e-3,
-        'slab' : 4e-3,
-        'wall' : 4e-3
-    }
 
     def __init__(self, b: float, h: float, As: float, As1: float, covering: float):
         self.b = b
@@ -22,8 +22,8 @@ class ConcreteSection:
         self.steel = ReinforcingSteel(5e8)
 
     def minimum_reinforcement(self, structure):
-        ratio = self.__min_reinf[structure]
-        minimum = ratio * self.area
+        ratio = UNE_EN.minimum_reinforcement_ratio(self, structure)
+        minimum = self.area * ratio
         perim = 2 * (self.b + self.h)
         return {
             'top' : minimum * self.b / perim,
