@@ -190,13 +190,9 @@ a:hover {
     height: 350px;  /* Adjusts graph height */
 }
 
-#spinner-input::-webkit-outer-spin-button,
-#spinner-input::-webkit-inner-spin-button {
-    -webkit-appearance: none; /* Remove arrows in Chrome, Safari, Edge, and Opera */
-}
-
-#spinner-input {
-    -moz-appearance: textfield; /* Remove arrows in Firefox */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    display: none; /* Remove arrows in Chrome, Safari, Edge, and Opera */
 }
 
 @media (max-width: 768px) {
