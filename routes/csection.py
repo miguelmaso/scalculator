@@ -21,7 +21,7 @@ def calculate():
     try:
         width = float(data.get('width', 0))
         depth = float(data.get('depth', 0))
-        covering = float(data.get('covering', 0))
+        cover = float(data.get('cover', 0))
         top_tags = data.get('tags_top', [])  # Extract tags as a list
         bottom_tags = data.get('tags_bottom', [])
     except ValueError:
@@ -36,14 +36,14 @@ def calculate():
 
     width *= uts.dimensions.to_si
     depth *= uts.dimensions.to_si
-    covering *= uts.dimensions.to_si
+    cover *= uts.dimensions.to_si
     reinf_top = reinforcemet_from_tags(top_tags, width)
     reinf_bottom = reinforcemet_from_tags(bottom_tags, width)
     
     s = ConcreteSection(
         b=width,
         h=depth,
-        covering=covering,
+        cover=cover,
         As=reinf_bottom,
         As1=reinf_top)
     

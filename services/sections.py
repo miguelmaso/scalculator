@@ -12,12 +12,12 @@ class ConcreteSection(Section):
     
     __nc = 50
 
-    def __init__(self, b: float, h: float, As: float, As1: float, covering: float):
+    def __init__(self, b: float, h: float, As: float, As1: float, cover: float):
         self.b = b
         self.h = h
         self.As = As
         self.As1 = As1
-        self.covering = covering
+        self.cover = cover
         self.concrete = Concrete(3e7)
         self.steel = ReinforcingSteel(5e8)
 
@@ -37,7 +37,7 @@ class ConcreteSection(Section):
 
     @property
     def d(self):
-        return self.h - self.covering
+        return self.h - self.cover
 
     @property
     def reduced_moment(self):
@@ -45,11 +45,11 @@ class ConcreteSection(Section):
 
     @property
     def _z_As(self):
-        return -0.5 * self.h + self.covering
+        return -0.5 * self.h + self.cover
     
     @property
     def _z_As1(self):
-        return 0.5 * self.h - self.covering
+        return 0.5 * self.h - self.cover
 
     @property
     def _z_c(self):
