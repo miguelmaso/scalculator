@@ -3,3 +3,4 @@ plotly
 flask
 markdown
 weasyprint
+gunicorn

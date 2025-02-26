@@ -67,13 +67,19 @@ function initTagInput(container) {
         updateHiddenInput();
     }
 
+    function processTagEvent(event){
+        if (tagInput.value.trim() !== "") {
+            event.preventDefault();
+            createTag(tagInput.value);
+            tagInput.value = "";
+        }
+    }
+
     tagInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter" || event.key === "Tab" || event.key === " " || event.key === ",") {
-            if (tagInput.value.trim() !== "") {
-                event.preventDefault();
-                createTag(tagInput.value);
-                tagInput.value = "";
-            }
+            processTagEvent(event);
         }
     });
+
+    tagInput.addEventListener("blur", processTagEvent);
 }
