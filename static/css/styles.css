@@ -174,3 +174,14 @@ a:hover {
     min-width: 200px;  /* Prevents them from being too small */
     height: 350px;  /* Adjusts graph height */
 }
+
+@media (max-width: 768px) {
+
+    .columns {
+        display: cell;  /* Disables horizontal layout */
+        justify-content: space-between;  /* Spaces columns evenly */
+        align-items: flex-start;  /* Aligns items at the top */
+        gap: 20px;  /* Adds spacing between columns */
+    }
+
+}
