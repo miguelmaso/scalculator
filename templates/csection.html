@@ -20,6 +20,7 @@
     <div class="container">
         <div class="columns">
             <div class="column">
+                <h2>Geometry</h2>
                 <div class="input-container">
                     <label for="structure-options">Structure</label>
                     <select id="structure-options" name="structure">
@@ -68,6 +69,7 @@
                 </div>
             </div>
             <div class="column">
+                <h2>Reinforcement</h2>
                 <div class="tag-input-container">
                     <label for="tagInput">Top reinforcement</label>
                     <div class="tag-container" data-name="tags_top">
@@ -82,6 +84,10 @@
                     </div>
                     <input type="hidden" name="tags_bottom">
                 </div>
+                <div class="graph-container">
+                    <div id="graph-container-1"></div>
+                </div>
+                <h2>Minimum reinforcement</h2>
                 <div class="input-container">
                     <label for="spinner-input">Diameter</label>
                     <div class="spinner-container">
@@ -90,11 +96,40 @@
                         <button type="button" class="spinner-btn" id="increase-btn">+</button>
                     </div>
                 </div>
+                <div class="output-container">
+                    <label>Top</label>
+                    <span id="minimum-top" class="output-tag">3H12</span>
+                    <span id="minimum-top-comment" class="comment">To be added</span>
+                </div>
+                <div class="output-container">
+                    <label>Bottom</label>
+                    <span id="minimum-bottom" class="output-tag"></span>
+                    <span id="minimum-bottom-comment" class="comment">Already satisfied</span>
+                </div>
+                <div class="output-container">
+                    <label>Side</label>
+                    <span id="minimum-side" class="output-tag"></span>
+                    <span id="minimum-side-comment" class="comment">Informative</span>
+                </div>
             </div>
-            <div class="column results">
-                <h3>Results</h3>
+            <div class="column">
+                <h2>Required resistance</h2>
+                <div class="input-container">
+                    <label>N</label>
+                    <input type="text" id="axial" name="axial" placeholder="0">
+                    <span class="unit">kN</span>
+                </div>
+                <div class="input-container">
+                    <label>M</label>
+                    <input type="text" id="moment" name="moment" placeholder="0">
+                    <span class="unit">kNm</span>
+                </div>
+                <div class="input-container">
+                    <label>Q</label>
+                    <input type="text" id="shear" name="shear" placeholder="0">
+                    <span class="unit">kN</span>
+                </div>
                 <div class="graph-container">
-                    <div id="graph-container-1"></div>
                     <div id="graph-container-2"></div>
                 </div>
             </div>

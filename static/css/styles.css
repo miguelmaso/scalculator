@@ -10,8 +10,10 @@ body {
 }
 
 h2 {
-    margin-bottom: 20px;
+    margin-top: 5px;
     color: #333;
+    text-align: left;
+    font-size: 14px;
 }
 
 .container {
@@ -38,15 +40,11 @@ h2 {
     background-color: #f9f9f9;
 }
 
-.results {
-    flex: 2;  /* Make results column wider */
-}
-
 .hidden {
     display: none !important;
 }
 
-.input-container {
+.input-container, .output-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,9 +52,19 @@ h2 {
     margin-bottom: 15px;
 }
 
+.output-container {
+    text-align: left;
+}
+
 .input-container label {
     flex: 1;  /* Label takes 1 part of space */
     text-align: right;
+    margin-right: 10px;
+}
+
+label {
+    flex: 1;  /* Label takes 1 part of space */
+    text-align: left;
     margin-right: 10px;
 }
 
@@ -81,6 +89,12 @@ h2 {
 
 .unit {
     flex: 0.5;  /* Unit takes half a part */
+    margin-left: 10px;
+    color: #555;
+}
+
+.comment {
+    flex: 2;  /* Comment takes two parts */
     margin-left: 10px;
     color: #555;
 }
@@ -170,6 +184,16 @@ a:hover {
     border-radius: 15px;
 }
 
+.output-tag {
+    display: flex;
+    align-items: center;
+    background: #888;
+    color: white;
+    padding: 5px 10px;
+    margin: 2px;
+    border-radius: 15px;
+}
+
 .remove-tag {
     margin-left: 8px;
     cursor: pointer;
@@ -187,7 +211,7 @@ a:hover {
     flex: 1;  
     max-width: 300px;  /* Limits graph width */
     min-width: 200px;  /* Prevents them from being too small */
-    height: 350px;  /* Adjusts graph height */
+    height: 250px;  /* Adjusts graph height */
 }
 
 input[type=number]::-webkit-outer-spin-button,
