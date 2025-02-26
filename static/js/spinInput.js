@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".spin-container").forEach(initSpinInput);
 });
 
-function initTagInput(container) {
+function initSpinInput(container) {
     const allowedValues = [8, 10, 12, 16, 20, 25, 32, 40];
     const spinnerInput = container.querySelector("spinner-input");
     const decreaseBtn = container.querySelector("decrease-btn");
