@@ -82,6 +82,14 @@
                     </div>
                     <input type="hidden" name="tags_bottom">
                 </div>
+                <div class="input-container">
+                    <label for="spinner-input">Diameter</label>
+                    <div class="spinner-container">
+                        <button type="button" class="spinner-btn" id="decrease-btn">−</button>
+                        <input type="number" id="spinner-input" min="8" max="40" step="1" value="8">
+                        <button type="button" class="spinner-btn" id="increase-btn">+</button>
+                    </div>
+                </div>
             </div>
             <div class="column results">
                 <h3>Results</h3>
@@ -93,6 +101,7 @@
         </div>
     </div>
     <script src="/static/js/tagInput.js"></script>
+    <script src="/static/js/spinnerInput.js"></script>
     <script src="/static/js/csection.js"></script>
 </body>
 </html>

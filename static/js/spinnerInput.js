@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".spin-container").forEach(initSpinInput);
+    document.querySelectorAll(".spinner-container").forEach(initSpinnerInput);
 });
 
-function initSpinInput(container) {
+function initSpinnerInput(container) {
     const allowedValues = [8, 10, 12, 16, 20, 25, 32, 40];
-    const spinnerInput = container.querySelector("spinner-input");
-    const decreaseBtn = container.querySelector("decrease-btn");
-    const increaseBtn = container.querySelector("increase-btn");
+    const spinnerInput = container.querySelector("#spinner-input");
+    const decreaseBtn = container.querySelector("#decrease-btn");
+    const increaseBtn = container.querySelector("#increase-btn");
 
     function findClosest(value) {
         return allowedValues.reduce((prev, curr) =>

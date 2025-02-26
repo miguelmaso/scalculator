@@ -66,7 +66,6 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: white;
-    font-size: 14px;
     text-align: right; /* Align text like inputs */
     cursor: pointer;
 }
@@ -83,7 +82,6 @@ h2 {
 .unit {
     flex: 0.5;  /* Unit takes half a part */
     margin-left: 10px;
-    font-size: 14px;
     color: #555;
 }
 
@@ -95,11 +93,29 @@ button {
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
 }
 
 button:hover {
     background: #218838;
+}
+
+.spinner-container {
+    display: flex;
+    align-items: center;
+}
+
+.spinner-btn {
+    width: 30px;
+    padding: 8px;
+    font-weight: bold;
+    color: #333;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.spinner-btn:hover {
+    background-color: #ddd;
 }
 
 p {
@@ -135,7 +151,6 @@ a:hover {
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
-    min-height: 40px;
 }
 
 .tag-container input {
@@ -175,13 +190,19 @@ a:hover {
     height: 350px;  /* Adjusts graph height */
 }
 
+#spinner-input::-webkit-outer-spin-button,
+#spinner-input::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Remove arrows in Chrome, Safari, Edge, and Opera */
+}
+
+#spinner-input {
+    -moz-appearance: textfield; /* Remove arrows in Firefox */
+}
+
 @media (max-width: 768px) {
 
     .columns {
-        display: cell;  /* Disables horizontal layout */
-        justify-content: space-between;  /* Spaces columns evenly */
-        align-items: flex-start;  /* Aligns items at the top */
-        gap: 20px;  /* Adds spacing between columns */
+        display: grid;  /* Disables horizontal layout */
     }
 
 }
