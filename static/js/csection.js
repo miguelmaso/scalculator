@@ -24,11 +24,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     
     // Update the section input fields according to the section type
+    const structureDropdown = document.getElementById("structure-options");
     const sectionDropdown = document.getElementById("section-options");
     const widthLabel = document.getElementById('width-label');
     const flangeInput = document.getElementById('flange');
     const depthInput = document.getElementById('depth');
     const webInput = document.getElementById('web');
+    const sectionImage = document.getElementById("section-image");
     const flangeContainer = flangeInput.closest(".input-container");
     const depthContainer = depthInput.closest(".input-container");
     const webContainer = webInput.closest(".input-container");
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (selectedSection === "t-section") {
             flangeContainer.classList.remove("hidden");
             webContainer.classList.remove("hidden");
+            sectionImage.src = `/static/img/${selectedSection}.png`;
         }
         else {
             flangeContainer.classList.add("hidden");
@@ -51,13 +54,19 @@ document.addEventListener("DOMContentLoaded", function () {
             depthContainer.classList.remove("hidden");
             widthLabel.textContent = "Width";
         }
+        const selectedStructure = structureDropdown.value;
+        if (selectedStructure === "wall" || selectedStructure === "slab") {
+            sectionImage.src = `/static/img/slab.png`;
+        }
+        else {
+            sectionImage.src = `/static/img/${selectedSection}.png`;
+        }
     }
 
     sectionDropdown.addEventListener("change", updateSectionInputs);
     updateSectionInputs();
 
     // Update the section stype according to the structure type
-    const structureDropdown = document.getElementById("structure-options");
     const widthInput = document.getElementById("width");
     const structuralSectionOptions = {
         beam: ["Rectangular", "T-section"],
