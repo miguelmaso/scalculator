@@ -10,7 +10,7 @@ class Section:
 
 class ConcreteSection(Section):
     
-    __nc = 50
+    __nc = 50  # Number of fibers in the concrete section
 
     def __init__(self, b: float, h: float, As: float, As1: float, cover: float):
         self.b = b
