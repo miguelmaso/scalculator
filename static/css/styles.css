@@ -139,7 +139,8 @@ button:hover {
     color: #333;
     background-color: #f0f0f0;
     cursor: pointer;
-    margin: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
     border-radius: 15px;
 }
 

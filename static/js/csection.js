@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
+    // Initialize empty results
+    sendCalculationRequest();
     
     // Update the section input fields according to the section type
     const structureDropdown = document.getElementById("structure-options");
