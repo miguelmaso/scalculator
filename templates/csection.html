@@ -55,18 +55,16 @@
                     <span class="unit">mm</span>
                 </div>
                 <div class="input-container">
-                    <label for="covering">Cover</label>
+                    <label for="cover">Cover</label>
                     <input type="text" id="cover" name="cover" placeholder="40">
                     <span class="unit">mm</span>
                 </div>
-                <div class="tag-input-container">
-                    <label for="latex-expression">Reduced moment</label>
-                    <p>
-                        <span id="latex-expression">\( 25\%\,b\,h^2\,f_{cd} \) :</span>
-                        <span id="result"></span>
-                        <span class="unit">kNm</span>
-                    </p>
-                </div>
+                <h2>Reduced moment</h2>
+                <p>
+                    <span id="latex-expression">\( 25\%\,b\,h^2\,f_{cd} \) :</span>
+                    <span id="result"></span>
+                    <span class="unit">kNm</span>
+                </p>
             </div>
             <div class="column">
                 <h2>Reinforcement</h2>
@@ -128,6 +126,34 @@
                     <label>Q</label>
                     <input type="text" id="shear" name="shear" placeholder="0">
                     <span class="unit">kN</span>
+                </div>
+                <h2>Additional reinforcement</h2>
+                <div class="output-container">
+                    <label>Top</label>
+                    <div class="spinner-container">
+                        <button type="button" class="spinner-btn" id="decrease-btn">−</button>
+                        <input type="hidden" name="additional-top">
+                        <span id="additional-top" class="output-tag">3H20</span>
+                        <button type="button" class="spinner-btn" id="increase-btn">+</button>
+                    </div>
+                </div>
+                <div class="output-container">
+                    <label>Bottom</label>
+                    <div class="spinner-container">
+                        <button type="button" class="spinner-btn" id="decrease-btn">−</button>
+                        <input type="hidden" name="additional-bottom">
+                        <span id="additional-bottom" class="output-tag">3H20</span>
+                        <button type="button" class="spinner-btn" id="increase-btn">+</button>
+                    </div>
+                </div>
+                <div class="output-container">
+                    <label>Shear</label>
+                    <div class="spinner-container">
+                        <button type="button" class="spinner-btn" id="decrease-btn">−</button>
+                        <input type="hidden" name="additional-shear">
+                        <span id="additional-shear" class="output-tag">3H20</span>
+                        <button type="button" class="spinner-btn" id="increase-btn">+</button>
+                    </div>
                 </div>
                 <div class="graph-container">
                     <div id="graph-container-2"></div>
